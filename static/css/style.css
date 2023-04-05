@@ -290,6 +290,7 @@ button {
 .more_bt {
     width: 170px;
     float: left;
+    border-radius: 10px;
 }
 
 .more_bt a {
@@ -305,7 +306,8 @@ button {
 .contact_bt {
     width: 170px;
     float: left;
-    margin-left: 15px;
+    margin-left: 30px;
+    border-radius: 10px;
 }
 
 .contact_bt a {

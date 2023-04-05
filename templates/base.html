@@ -287,7 +287,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-image: url(../images/banner-bg.png);
+    background-image: url(.static/images/banner-bg.png);
     height: auto;
     background-size: 100%;
     padding: 10px 0px 25px 0px;
@@ -359,6 +359,7 @@ button {
 .more_bt {
     width: 170px;
     float: left;
+    border-radius: 10px;
 }
 
 .more_bt a {
@@ -374,7 +375,8 @@ button {
 .contact_bt {
     width: 170px;
     float: left;
-    margin-left: 15px;
+     margin-left: 30px;
+    border-radius: 10px;
 }
 
 .contact_bt a {
@@ -1653,8 +1655,9 @@ input.Enter_text::placeholder {
 <center>
 	<div id="nav">
 		{% if user.is_authenticated %}
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-           <div class="logo"><a href="index.html"><img src="{% static 'images/logo.png' %}"></a></div>
+        {% comment %} <div class="header_section" style="background-image: url(/static/images/banner-bg.png);">  {% endcomment %}
+			<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color=#f1fafb">
+           <div class="logo"><a href="index.html"><img src="{% static 'images/hw.png' %}"></a></div>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
            </button>
@@ -1682,13 +1685,15 @@ input.Enter_text::placeholder {
               </ul>
            </div>
         </nav>
+        </div>
 		{% else %}
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-           <div class="logo"><a href="index.html"><img src="{% static 'images/logo.png' %}"></a></div>
+        {% comment %} <div class="header_section" style="background-image: url(/static/images/banner-bg.png);">  {% endcomment %}
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color=#f1fafb">
+           <div class="logo"><a href="index.html"><img src="{% static 'images/hw.png' %}"></a></div>
            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
            </button>
-           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <div class="collapse navbar-collapse" id="navbarSupportedContent" >
               <ul class="navbar-nav mr-auto">
                  <li class="nav-item active">
                     <a class="nav-link" href="{% url 'landing' %}">Home</a>
@@ -1709,6 +1714,7 @@ input.Enter_text::placeholder {
               </ul>
            </div>
         </nav>
+        </div > 
 
 
 		

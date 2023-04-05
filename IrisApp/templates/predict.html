@@ -3,63 +3,67 @@
 {% block title %}Disease Prediction{% endblock %}
 
 {% block content %}
-{{ super }}
-  <h1 style="font-size: 40px; text-align: center;">Disease Prediction Application</h1>
-  <hr>
-  {% if result %}
-    <h1 style="font-size: 30px;">The predicted disease is {{result}}</h1>
-  {% endif %}
+<style>
+.predict_btn{
+ font-size: 20px;
+ border-radius:10px;
+}
+</style>
 
-  <form method="POST" style="margin-top: 20px;">
+
+{{ super }}
+  <h1 style="font-size: 40px; text-align: center;">Disease Prediction</h1>
+  <hr>
+
+
+  {% comment %} <form method="POST" style="margin-top: 20px;">
     {% csrf_token %}
-    <select multiple name="options" id="my-select" style="padding: 10px; font-size: 20px;">
+     <select multiple name="options" id="my-select" style="padding: 10px; font-size: 20px;">
       {% for symptom in symptoms %}
         <option value="{{symptom}}">{{symptom}}</option>
       {% endfor %}
-    </select>
-    <input type="submit" value="Submit" style="padding: 10px 20px; margin-left: 20px; font-size: 20px; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
-  </form>
-
-  <script>
-    $(document).ready(function() {
-      $('#my-select').select2({
-        placeholder: 'Search for an option'
-      });
-  
-      $('#my-form').on('submit', function(e) {
-        e.preventDefault();
-  
-        // Get the selected values from the multi-select input field
-        const formData = new FormData(this);
-        const selectedValues = formData.getAll('options');
-  
-        // Create a POST request to your Django backend
-        fetch('/', {
-          method: 'POST',
-          body: JSON.stringify(selectedValues),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response => {
-          console.log('Response:', response);
-          // Do something with the response from your Django backend
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-      });
-    });
-  </script>
-
-  {% if my_info %}
-    <h2 style="margin-top: 40px; font-size: 30px;">Information:</h2>
-    <ul style="list-style-type: none; padding-left: 0;">
-      {% for info in my_info %}
-        <li style="font-size: 20px;">{{ info }}</li>
+    </select> 
+  </form> {% endcomment %}
+  <p> Enter the symptoms you're experiencing:</p>
+  <form method="POST" style="margin-top: 20px;">
+    {% csrf_token %}
+    <select multiple name="options" id="symptom-input" style="padding: 10px; font-size: 20px;">
+      {% for symptom in symptoms %}
+        <option value="{{symptom}}">{{symptom}}</option>
       {% endfor %}
-    </ul>
-  {% endif %}
+    </select> <br><br>
+    <input class="predict_btn" type="submit" value="Predict" id="my-submit">
+ 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#symptom-input').select2({
+      placeholder: 'Select Symptoms',
+      allowClear: true
+    });
+  });
+
+  $('#my-submit').click(function() {
+    var selected = $('#symptom-input').val();
+    if (selected.length == 0) {
+      alert('Please select at least one symptom');
+      return false;
+    }
+  });
+
+  $('#symptom-input').on('select2:select', function (e) {
+    var data = e.params.data;
+    console.log(data);
+  });
+  
+</script>
+{% if result %}
+  {% for disease, probability in result.items %}
+      <h2 style="margin-top: 40px; font-size: 30px;">Disease: {{ disease }}</h2>
+      <h2 style="font-size: 30px;">Probability: {{ probability }}</h2>
+  {% endfor %}
+{% endif %}   
 
   <div id="chart" style="margin-top: 40px;"></div>
   <script>
@@ -101,5 +105,13 @@
     svg.append("g")
       .call(d3.axisLeft(y));
   </script>
+  {% if my_info %}
+    <h2 style="margin-top: 40px; font-size: 30px;">Information:</h2>
+    <ul style="list-style-type: none; padding-left: 0;">
+      {% for info in my_info %}
+        <li style="font-size: 20px;">{{ info }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
   
 {% endblock %}

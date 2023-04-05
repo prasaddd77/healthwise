@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from joblib import load
 import numpy as np
 import openai
-openai.api_key = "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"
+openai.api_key = "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"
 rfc_model_new = load("./savedModels/rfc_model_new.joblib")
 wt_knn = load("./savedModels/wt_knn.joblib")
 symptoms = load("./savedModels/symptoms.joblib")

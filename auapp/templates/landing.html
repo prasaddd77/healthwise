@@ -2,18 +2,18 @@
 {% load static %}
 {% block title %}Landing Page{% endblock %}
 {% block content %}
-    <div id="main_slider" class="carousel slide" data-ride="carousel">
-           <div class="carousel-inner">
-              <div class="carousel-item active">
+    <div id="main_slider" class="carousel slide" data-ride="carousel" >
+           <div class="carousel-inner" style="background-image: url(/static/images/banner-bg.png);">
+              <div class="carousel-item active" style="background-image: url(/static/images/banner-bg.png);">
                  <div class="banner_section">
                     <div class="container">
                        <div class="row">
                           <div class="col-md-6">
                              <h1 class="banner_taital">Health <br><span style="color: #151515;">Wise</span></h1>
-                             <p class="banner_text">There are many variations of passages of Lorem Ipsum</p>
+                             <p class="banner_text">Healthcare Especially For You.</p>
                              <div class="btn_main">
-                                <div class="more_bt"><a href="{% url 'contact' %}">Contact Now</a></div>
-                                <div class="contact_bt"><a href="{% url 'contact' %}">Get A Quote</a></div>
+                                <div class="more_bt"><a href="{% url 'contact' %}" style="margin-left:120px;">Contact Now</a></div>
+                                <div class="contact_bt"><a href="{% url 'contact' %}"style="margin-left:120px;">Get A Quote</a></div>
                              </div>
                           </div>
                           <div class="col-md-6">
@@ -23,35 +23,16 @@
                     </div>
                  </div>
               </div>
-              <div class="carousel-item">
-                 <div class="banner_section">
+              <div class="carousel-item" style="background-image: url(/static/images/banner-bg.png);">
+                 <div class="banner_section" style="background-image: url(/static/images/banner-bg.png);">
                     <div class="container">
                        <div class="row">
                           <div class="col-md-6">
-                             <h1 class="banner_taital">Health <br><span style="color: #151515;">Care</span></h1>
-                             <p class="banner_text">There are many variations of passages of Lorem Ipsum</p>
+                             <h1 class="banner_taital">Health <br><span style="color: #151515;">Wise</span></h1>
+                             <p class="banner_text">Healthcare Especially For You.</p>
                              <div class="btn_main">
-                                <div class="more_bt"><a href="{% url 'contact' %}">Contact Now</a></div>
-                                <div class="contact_bt"><a href="{% url 'contact' %}">Get A Quote</a></div>
-                             </div>
-                          </div>
-                          <div class="col-md-6">
-                             <div class="image_1"><img src="{% static 'images/img-1.png' %}"></div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <div class="carousel-item">
-                 <div class="banner_section">
-                    <div class="container">
-                       <div class="row">
-                          <div class="col-md-6">
-                             <h1 class="banner_taital">Health <br><span style="color: #151515;">Care</span></h1>
-                             <p class="banner_text">There are many variations of passages of Lorem Ipsum</p>
-                             <div class="btn_main">
-                                <div class="more_bt"><a href="{% url 'contact' %}">Contact Now</a></div>
-                                <div class="contact_bt"><a href="{% url 'contact' %}">Get A Quote</a></div>
+                                <div class="more_bt"><a href="{% url 'user_login' %}" style="margin-left:120px;">Login</a></div>
+                                <div class="contact_bt"><a href="{% url 'user_signup' %}"style="margin-left:120px;">Sign Up</a></div>
                              </div>
                           </div>
                           <div class="col-md-6">
@@ -110,7 +91,7 @@
     <div class="container">
        <div class="row">
           <div class="col-lg-3 col-sm-6">
-             <div class="footer_logo"><a href="index.html"><img src="{% static 'images/footer-logo.png' %}"></a></div>
+             <div class="footer_logo"><a href="index.html"><img src="{% static 'images/footer-hw.png' %}"></a></div>
              <h1 class="adderss_text">Contact Us</h1>
              <div class="map_icon"><img src="{% static 'images/map-icon.png' %}"><span class="paddlin_left_0">Lorem ipsum dolor sit</span></div>
              <div class="map_icon"><img src="{% static 'images/call-icon.png' %}"><span class="paddlin_left_0">+7586656566</span></div>
